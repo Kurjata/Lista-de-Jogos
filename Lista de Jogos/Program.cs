@@ -2,7 +2,7 @@
 
 string mensagemDeBoasVindas = "\nBem vindo ao Terminal interativo de jogos!!! :)";
 
-void ExibirMensagemDeBoasVindas()
+void ExibirLogo()
 {
     Console.WriteLine(@"
 ▒█▀▀█ █▀▀█ █▀▄▀█ █▀▀ █ █▀▀ 　 ▀▀█▀▀ █▀▀ █▀▀█ █▀▄▀█ ░▀░ █▀▀▄ █▀▀█ █░░ 
@@ -13,6 +13,7 @@ void ExibirMensagemDeBoasVindas()
 
 void ExibirOpcoesDoMenu()
 {
+    ExibirLogo();
     Console.WriteLine("\nDigite 1 para registrar um jogo");
     Console.WriteLine("Digite 2 para mostrar todos os jogos registrados");
     Console.WriteLine("Digite 3 para avaliar um jogo");
@@ -25,7 +26,7 @@ void ExibirOpcoesDoMenu()
 
     switch (opcaoEscolhidaNumerica)
     {
-        case 1: Console.WriteLine("Você escolheu a opção " + opcaoEscolhidaNumerica);
+        case 1: RegistrarJogo();
             break;
         case 2: Console.WriteLine("Você escolheu a opção " + opcaoEscolhidaNumerica);
             break;
@@ -40,5 +41,18 @@ void ExibirOpcoesDoMenu()
     }
 }
 
-ExibirMensagemDeBoasVindas();
+void RegistrarJogo()
+{
+    ExibirLogo();
+    Console.Clear();
+    Console.WriteLine("Registro de jogos");
+    Console.Write("Digite aqui o nome do jogo que você deseja registrar: ");
+    string nomeDoJogo = Console.ReadLine()!;
+    Console.WriteLine($"{nomeDoJogo} foi cadastrado com sucesso! ");
+    Thread.Sleep(2000);
+    Console.Clear();
+    ExibirOpcoesDoMenu();
+}
+
+
 ExibirOpcoesDoMenu();
