@@ -1,7 +1,7 @@
 ﻿//Game's Terminal
 
 string mensagemDeBoasVindas = "\nBem vindo ao Terminal interativo de jogos!!! :)";
-List<string> listaDeJogos = new List<string> { "Spider Man" };
+List<string> listaDeJogos = new List<string> { "\nSpider Man" };
 
 void ExibirLogo()
 {
@@ -44,10 +44,11 @@ void ExibirOpcoesDoMenu()
 
 void RegistrarJogo()
 {
-    ExibirLogo();
+
+    
     Console.Clear();
-    Console.WriteLine("Registro de jogos");
-    Console.Write("Digite aqui o nome do jogo que você deseja registrar: ");
+    ExibirTituloDaOpcao("Registro de jogos");
+    Console.Write("\nDigite aqui o nome do jogo que você deseja registrar: ");
     string nomeDoJogo = Console.ReadLine()!;
     listaDeJogos.Add(nomeDoJogo);
     Console.WriteLine($"{nomeDoJogo} foi cadastrado com sucesso! ");
@@ -59,15 +60,24 @@ void RegistrarJogo()
 void MostrarJogosRegistrados()
 {
     Console.Clear();
-    Console.WriteLine("Exibindo todos os jogos já cadastrados:");
-    for (int i = 0; i < listaDeJogos.Count; i++)
+    ExibirTituloDaOpcao("Exibindo todos os jogos já cadastrados:");
+    foreach(string jogo in listaDeJogos)
     {
-        Console.WriteLine($"\n{listaDeJogos[i]}");
+        Console.WriteLine($"\n{jogo}");
     }
-    Console.WriteLine("\nPressione qualquer tecla para voltar ao menu principal da aplicação");
+    Console.WriteLine("\nPressione qualquer tecla para voltar ao menu principal da aplicação.");
     Console.ReadKey();
     Console.Clear();
     ExibirOpcoesDoMenu();
+}
+
+void ExibirTituloDaOpcao(string titulo)
+{
+    int quantidadeDeLetras = titulo.Length;
+    string asteriscos = string.Empty.PadLeft(quantidadeDeLetras, '*');
+    Console.WriteLine(asteriscos);
+    Console.WriteLine(titulo);
+    Console.WriteLine(asteriscos + "\n");
 }
 
 
